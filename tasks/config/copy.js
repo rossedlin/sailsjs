@@ -19,25 +19,76 @@
  *   https://github.com/gruntjs/grunt-contrib-copy
  *
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.config.set('copy', {
-    dev: {
+
+    /**
+     *
+     */
+    assets: {
       files: [{
         expand: true,
         cwd: './assets',
-        src: ['**/*.!(coffee|less)'],
+        src: [
+          '**/*.!(coffee|less)'
+        ],
         dest: '.tmp/public'
       }]
     },
-    build: {
+
+    /**
+     * jQuery
+     */
+    jquery: {
       files: [{
         expand: true,
-        cwd: '.tmp/public',
-        src: ['**/*'],
-        dest: 'www'
+        cwd: './node_modules/jquery/dist',
+        src: [
+          'jquery.js'
+        ],
+        dest: '.tmp/public/js/dependencies/jquery'
+      }]
+    },
+
+    /**
+     * Light Gallery
+     */
+    lightgallery: {
+      files: [{
+        expand: true,
+        cwd: './node_modules/lightgallery/dist',
+        src: [
+          'fonts/*',
+          'img/*',
+          'js/*'
+        ],
+        dest: '.tmp/public'
+      }, {
+        expand: true,
+        cwd: './node_modules/lg-thumbnail/dist',
+        src: [
+          '*.js'
+        ],
+        dest: '.tmp/public/js'
+      }, {
+        expand: true,
+        cwd: './node_modules/lg-fullscreen/dist',
+        src: [
+          '*.js'
+        ],
+        dest: '.tmp/public/js'
       }]
     }
+
+    // build: {
+    //   files: [{
+    //     expand: true,
+    //     cwd: '.tmp/public',
+    //     src: ['**/*'],
+    //     dest: 'www'
+    //   }]
+    // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
