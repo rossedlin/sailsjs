@@ -47,7 +47,22 @@ module.exports = function (grunt) {
         src: [
           'jquery.js'
         ],
-        dest: '.tmp/public/js/dependencies/jquery'
+        dest: '.tmp/public/js'
+      }]
+    },
+
+    /**
+     * Bootstrap
+     */
+    bootstrap: {
+      files: [{
+        expand: true,
+        cwd: './node_modules/bootstrap/dist',
+        src: [
+          'js/bootstrap.js',
+          'css/bootstrap.css'
+        ],
+        dest: '.tmp/public'
       }]
     },
 
@@ -59,36 +74,26 @@ module.exports = function (grunt) {
         expand: true,
         cwd: './node_modules/lightgallery/dist',
         src: [
-          'fonts/*',
-          'img/*',
-          'js/*'
+          'css/lightgallery.css',
+          'js/lightgallery.js'
         ],
-        dest: '.tmp/public'
+        dest: '.tmp/public/vendor/lightgallery'
       }, {
         expand: true,
         cwd: './node_modules/lg-thumbnail/dist',
         src: [
-          '*.js'
+          'lg-thumbnail.js'
         ],
-        dest: '.tmp/public/js'
+        dest: '.tmp/public/vendor/lg-thumbnail'
       }, {
         expand: true,
         cwd: './node_modules/lg-fullscreen/dist',
         src: [
-          '*.js'
+          'lg-fullscreen.js'
         ],
-        dest: '.tmp/public/js'
+        dest: '.tmp/public/vendor/lg-fullscreen'
       }]
     }
-
-    // build: {
-    //   files: [{
-    //     expand: true,
-    //     cwd: '.tmp/public',
-    //     src: ['**/*'],
-    //     dest: 'www'
-    //   }]
-    // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');

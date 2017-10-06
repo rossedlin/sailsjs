@@ -27,9 +27,11 @@ module.exports = function (grunt) {
 
     'copy:assets',
     'copy:jquery',
+    'copy:bootstrap',
     'copy:lightgallery',
 
     'less:dev',
+
     'concat'
     // 'coffee:dev',
   ]);
